@@ -12,9 +12,12 @@ h1{margin:0;font:500 clamp(21px,3vw,37px)/1 'Songti SC',SimSun,serif;letter-spac
 .scroll{height:100%;min-width:0;container-type:size;overflow:auto hidden;scrollbar-width:none;cursor:grab;touch-action:pan-x;overscroll-behavior-x:contain}.scroll::-webkit-scrollbar{display:none}.scroll.dragging{cursor:grabbing;user-select:none}.scroll:focus-visible{outline:2px solid #253341;outline-offset:-3px}
 .strip{position:relative;display:flex;align-items:stretch;width:max-content;height:100%;padding:0 min(10vw,145px) 0 clamp(26px,7vw,105px)}
 .river{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.mascot{position:absolute;z-index:2;pointer-events:none;transform:translate(-50%,-50%);width:clamp(28px,4.1vw,57px)}.mascot.cat{width:clamp(45px,5.6vw,77px)}
-.entry{flex:none;position:relative;width:clamp(280px,31vw,435px);height:100%;z-index:3;--river-gap:clamp(42px,9cqh,70px);--photo-height:clamp(54px,calc((50cqh - var(--river-gap) - 14px) / 1.18),345px)}
-.entry-content{position:absolute;display:flex;align-items:center;gap:clamp(12px,1.8vw,24px);inset:8px 14px calc(50% + var(--river-gap)) 0}
-.entry.bottom .entry-content{inset:calc(50% + var(--river-gap)) 14px 8px 0}
+.entry{flex:none;position:relative;width:clamp(205px,23vw,320px);height:100%;z-index:3;--entry-gutter:clamp(40px,5vw,76px);--river-gap:clamp(42px,9cqh,70px);--photo-height:clamp(54px,calc((50cqh - var(--river-gap) - 14px) / 1.18),345px)}
+.entry-content{position:absolute;inset:8px 0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) calc(var(--river-gap)*2) minmax(0,1fr);place-items:center}
+.entry .photos{grid-area:1 / 1}
+.entry .note{grid-area:3 / 1}
+.entry.bottom .photos{grid-row:3}
+.entry.bottom .note{grid-row:1}
 .photos{position:relative;flex:none;width:calc(var(--photo-height)*1.36);height:calc(var(--photo-height)*1.18);isolation:isolate}
 .shanghai .photos{width:calc(var(--photo-height)*2.24)}
 .beijing .photos,.pending .photos{width:calc(var(--photo-height)*.57);height:calc(var(--photo-height)*.86)}
@@ -25,10 +28,10 @@ h1{margin:0;font:500 clamp(21px,3vw,37px)/1 'Songti SC',SimSun,serif;letter-spac
 .lean-shanghai{width:auto;height:74%;left:65%;top:24%;border:5px solid #f7f2de;border-bottom-width:14px;transform:rotate(7deg)}
 .meal{width:90%;top:3%;left:3%;border-radius:5px;transform:rotate(-6deg)}
 .empty{position:absolute;inset:2% 3%;display:grid;place-items:center;border:1px dashed #795a49a6;border-radius:8px;background:#f7f2de45;color:#684a3a;font-size:12px;transform:rotate(-3deg)}
-.note{max-width:14em;min-width:0}time{display:block;color:#684a3a;font:14px/1.3 Georgia,serif;letter-spacing:.08em}h2{font:600 clamp(19px,2.2vw,28px)/1.15 'Songti SC',SimSun,serif;margin:8px 0;color:#253341}p{margin:0;font-size:clamp(12px,1.2vw,15px);line-height:1.55;text-wrap:pretty}
+.note{width:max-content;max-width:min(22em,calc(100% - 40px));min-width:0;overflow-wrap:anywhere}time{display:block;color:#684a3a;font:14px/1.3 Georgia,serif;letter-spacing:.08em}h2{font:600 clamp(19px,2.2vw,28px)/1.15 'Songti SC',SimSun,serif;margin:8px 0;color:#253341}p{margin:0;font-size:clamp(12px,1.2vw,15px);line-height:1.55;text-wrap:pretty}
 footer{display:flex;align-items:center;gap:12px;padding:8px clamp(17px,4vw,44px) 12px}footer span{font-size:12px}.progress{height:2px;flex:1;background:#25334126}.progress b{display:block;width:0;height:100%;background:#805b45}button{pointer-events:auto;border:1px solid #25334177;border-radius:50%;background:#f7f2de5c;color:#253341;width:34px;height:34px;cursor:pointer;font-size:19px}
-.entry.xian{width:calc(var(--photo-height)*1.36 + 12rem)}
-.entry.shanghai{width:calc(var(--photo-height)*2.24 + 14rem)}
+.entry.xian{width:max(205px,calc(var(--photo-height)*1.36 + var(--entry-gutter)))}
+.entry.shanghai{width:max(205px,calc(var(--photo-height)*2.24 + var(--entry-gutter)))}
 .photo{cursor:zoom-in}
 .photo:focus-visible,.photo-viewer button:focus-visible{outline:3px solid #20384c;outline-offset:4px}
 .photo-viewer{margin:auto;padding:0;border:0;background:transparent;overflow:visible;max-width:none;max-height:none}
@@ -37,17 +40,13 @@ footer{display:flex;align-items:center;gap:12px;padding:8px clamp(17px,4vw,44px)
 .photo-viewer button{position:fixed;top:14px;right:14px;width:42px;height:42px;background:#f7f2de;font-size:24px}
 @media(max-width:620px){
   .entry{--photo-height:clamp(54px,calc((50cqh - var(--river-gap) - 14px) / 1.18),225px)}
-  .entry.xian{width:calc(var(--photo-height)*1.36 + 10rem)}
-  .entry.shanghai{width:calc(var(--photo-height)*2.24 + 10rem)}
-  .entry-content{gap:14px}
 }
 @media(max-height:480px){header,footer{padding-block:6px}h2{margin:4px 0}}
 
-.entry.single{width:max(clamp(280px,31vw,435px),calc(var(--photo-height)*.98 + 12rem))}
+.entry.single{width:max(205px,calc(var(--photo-height)*.98 + var(--entry-gutter)))}
 .entry.single .photos{width:calc(var(--photo-height)*.98);height:calc(var(--photo-height)*1.18)}
 .entry.single .photo{height:97%;width:auto;max-width:96%;top:2%;left:2%;border:4px solid #f7f2de;transform:rotate(-4deg)}
 .entry.pending .photos{width:clamp(76px,calc(var(--photo-height)*.52),125px);height:clamp(88px,calc(var(--photo-height)*.78),175px)}
-@media(max-width:620px){.entry.single{width:calc(var(--photo-height)*.98 + 10rem)}}
 
 .mascot.fish{filter:drop-shadow(0 3px 1px #4c92b126)}
 .river{opacity:.95}
@@ -102,6 +101,31 @@ const motion = matchMedia('(prefers-reduced-motion: reduce)');
 const riverY = x => strip.clientHeight * .5 + Math.min(1, strip.clientHeight / 780) * (28 * Math.sin(x / 280 + .3) + 9 * Math.cos(x / 135));
 const riverHalf = () => scroll.clientWidth < 620 ? 19 : 25;
 
+function shoreMarkers(bankHalf) {
+  const origin = strip.getBoundingClientRect();
+  const radius = 3.5;
+  const markers = [];
+  for (const entry of strip.querySelectorAll('.entry')) {
+    const note = entry.querySelector('.note').getBoundingClientRect();
+    const textAbove = entry.classList.contains('bottom');
+    const direction = textAbove ? -1 : 1;
+    const x = (note.left + note.right) / 2 - origin.left;
+    const bankY = riverY(x) + direction * bankHalf;
+    const textEdge = (textAbove ? note.bottom : note.top) - origin.top;
+    const gap = (textEdge - bankY) * direction;
+    const available = gap - 10 - radius;
+    if (available < radius + 4) continue;
+    const length = Math.min(gap * .68, available);
+    const centerY = bankY + direction * length;
+    markers.push(
+      '<line x1="' + x + '" y1="' + bankY + '" x2="' + x + '" y2="' + centerY + '"/>' +
+      '<circle cx="' + x + '" cy="' + centerY + '" r="' + radius + '" fill="#f7f2de" stroke="none"/>'
+    );
+  }
+  return '<g stroke="#f7f2de" stroke-width="1.3" stroke-linecap="round">' +
+    markers.join('') + '</g>';
+}
+
 
 function paintRiver() {
   const width = strip.scrollWidth;
@@ -128,7 +152,7 @@ function paintRiver() {
     '<path d="' + channel + '" stroke="#f7f2de" stroke-width="' + (half * 2 + 10) + '" opacity=".36"/>' +
     '<path d="' + channel + '" stroke="#91c7df" stroke-width="' + (half * 2) + '"/>' +
     '<path d="' + channel + '" stroke="#a6d6e6" stroke-width="' + (half * 2 - 14) + '" opacity=".4"/></g>' +
-    details.join('');
+    details.join('') + shoreMarkers(half + 5);
 }
 
 function followScroll() {
