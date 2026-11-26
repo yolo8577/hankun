@@ -15,20 +15,20 @@ h1{margin:0;font:500 clamp(21px,3vw,37px)/1 'Songti SC',SimSun,serif;letter-spac
 .entry{flex:none;position:relative;width:clamp(280px,31vw,435px);height:100%;z-index:3;--river-gap:clamp(42px,9cqh,70px);--photo-height:clamp(54px,calc((50cqh - var(--river-gap) - 14px) / 1.18),345px)}
 .entry-content{position:absolute;display:flex;align-items:center;gap:clamp(12px,1.8vw,24px);inset:8px 14px calc(50% + var(--river-gap)) 0}
 .entry.bottom .entry-content{inset:calc(50% + var(--river-gap)) 14px 8px 0}
-.photos{position:relative;flex:none;width:calc(var(--photo-height)*1.04);height:calc(var(--photo-height)*1.18);isolation:isolate}
-.shanghai .photos{width:calc(var(--photo-height)*1.48);height:calc(var(--photo-height)*.98)}
+.photos{position:relative;flex:none;width:calc(var(--photo-height)*1.36);height:calc(var(--photo-height)*1.18);isolation:isolate}
+.shanghai .photos{width:calc(var(--photo-height)*2.24)}
 .beijing .photos,.pending .photos{width:calc(var(--photo-height)*.57);height:calc(var(--photo-height)*.86)}
 .photo{display:block;position:absolute;max-width:none;height:auto;user-select:none;box-shadow:0 12px 26px #24394b30;transform-origin:center;object-fit:contain}
-.ticket{width:56%;top:0;left:4%;border:6px solid #f7f2de;border-radius:3px;transform:rotate(-8deg)}
-.lean-xian{width:47%;left:47%;top:16%;border:5px solid #f7f2de;border-bottom-width:12px;transform:rotate(9deg)}
-.stage{width:83%;left:2%;top:1%;border-radius:5px;transform:rotate(-4deg)}
-.lean-shanghai{width:29%;left:71%;top:43%;border:5px solid #f7f2de;border-bottom-width:14px;transform:rotate(9deg)}
+.ticket{width:auto;height:94%;top:2%;left:2%;border:6px solid #f7f2de;border-radius:3px;transform:rotate(-5deg)}
+.lean-xian{width:auto;height:88%;left:48%;top:11%;border:5px solid #f7f2de;border-bottom-width:12px;transform:rotate(6deg)}
+.stage{width:auto;height:87%;left:1%;top:4%;border-radius:5px;transform:rotate(-3deg)}
+.lean-shanghai{width:auto;height:74%;left:65%;top:24%;border:5px solid #f7f2de;border-bottom-width:14px;transform:rotate(7deg)}
 .meal{width:90%;top:3%;left:3%;border-radius:5px;transform:rotate(-6deg)}
 .empty{position:absolute;inset:2% 3%;display:grid;place-items:center;border:1px dashed #795a49a6;border-radius:8px;background:#f7f2de45;color:#684a3a;font-size:12px;transform:rotate(-3deg)}
 .note{max-width:14em;min-width:0}time{display:block;color:#684a3a;font:14px/1.3 Georgia,serif;letter-spacing:.08em}h2{font:600 clamp(19px,2.2vw,28px)/1.15 'Songti SC',SimSun,serif;margin:8px 0;color:#253341}p{margin:0;font-size:clamp(12px,1.2vw,15px);line-height:1.55;text-wrap:pretty}
 footer{display:flex;align-items:center;gap:12px;padding:8px clamp(17px,4vw,44px) 12px}footer span{font-size:12px}.progress{height:2px;flex:1;background:#25334126}.progress b{display:block;width:0;height:100%;background:#805b45}button{pointer-events:auto;border:1px solid #25334177;border-radius:50%;background:#f7f2de5c;color:#253341;width:34px;height:34px;cursor:pointer;font-size:19px}
-.entry.xian{width:calc(var(--photo-height)*1.04 + 12rem)}
-.entry.shanghai{width:calc(var(--photo-height)*1.48 + 14rem)}
+.entry.xian{width:calc(var(--photo-height)*1.36 + 12rem)}
+.entry.shanghai{width:calc(var(--photo-height)*2.24 + 14rem)}
 .photo{cursor:zoom-in}
 .photo:focus-visible,.photo-viewer button:focus-visible{outline:3px solid #20384c;outline-offset:4px}
 .photo-viewer{margin:auto;padding:0;border:0;background:transparent;overflow:visible;max-width:none;max-height:none}
@@ -37,18 +37,17 @@ footer{display:flex;align-items:center;gap:12px;padding:8px clamp(17px,4vw,44px)
 .photo-viewer button{position:fixed;top:14px;right:14px;width:42px;height:42px;background:#f7f2de;font-size:24px}
 @media(max-width:620px){
   .entry{--photo-height:clamp(54px,calc((50cqh - var(--river-gap) - 14px) / 1.18),225px)}
-  .entry.xian{width:calc(var(--photo-height)*1.04 + 10rem)}
-  .entry.shanghai{width:calc(var(--photo-height)*1.25 + 10rem)}
-  .shanghai .photos{width:calc(var(--photo-height)*1.25)}
+  .entry.xian{width:calc(var(--photo-height)*1.36 + 10rem)}
+  .entry.shanghai{width:calc(var(--photo-height)*2.24 + 10rem)}
   .entry-content{gap:14px}
 }
 @media(max-height:480px){header,footer{padding-block:6px}h2{margin:4px 0}}
 
-.entry.single{width:max(clamp(280px,31vw,435px),calc(var(--photo-height)*.68 + 12rem))}
-.entry.single .photos,.entry.pending .photos{width:calc(var(--photo-height)*.68);height:calc(var(--photo-height)*1.04)}
-.entry.single .photo{height:94%;width:auto;max-width:96%;top:3%;left:2%;border:4px solid #f7f2de;transform:rotate(-4deg)}
+.entry.single{width:max(clamp(280px,31vw,435px),calc(var(--photo-height)*.98 + 12rem))}
+.entry.single .photos{width:calc(var(--photo-height)*.98);height:calc(var(--photo-height)*1.18)}
+.entry.single .photo{height:97%;width:auto;max-width:96%;top:2%;left:2%;border:4px solid #f7f2de;transform:rotate(-4deg)}
 .entry.pending .photos{width:clamp(76px,calc(var(--photo-height)*.52),125px);height:clamp(88px,calc(var(--photo-height)*.78),175px)}
-@media(max-width:620px){.entry.single{width:calc(var(--photo-height)*.68 + 10rem)}}
+@media(max-width:620px){.entry.single{width:calc(var(--photo-height)*.98 + 10rem)}}
 
 .mascot.fish{filter:drop-shadow(0 3px 1px #4c92b126)}
 .river{opacity:.95}
